@@ -1,0 +1,23 @@
+﻿@model EmployeeManagement.Models.Employee
+
+<html>
+<head>
+    <meta charset="utf-8" content="width=device-width">
+    <title>Employee Details</title>
+</head>
+<body>
+    <p>Employee Details</p>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Department</th>
+        </tr>
+        <tr>
+            <td>@Model.ID</td>
+            <td>@Model.Name</td>
+            <td>@Model.Department</td>
+        </tr>
+    </table>
+</body>
+</html>
