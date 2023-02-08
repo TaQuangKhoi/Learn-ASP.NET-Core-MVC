@@ -16,5 +16,12 @@ namespace EmployeeManagement.Controllers
         {
             return View(_employeeRepository.GetEmployee(ID));
         }
+        
+        // Phương thức trả về danh sách các nhân viên
+        public IActionResult List()
+        {
+            // return a view with IEnumerable<Employee>
+            return View(_employeeRepository.GetAllEmployees());
+        }
     }
 }
