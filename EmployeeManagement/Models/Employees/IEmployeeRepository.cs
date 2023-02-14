@@ -1,4 +1,4 @@
-﻿namespace EmployeeManagement.Models;
+﻿namespace CompanyManagement.Models.Employees;
 
 public interface IEmployeeRepository
 {

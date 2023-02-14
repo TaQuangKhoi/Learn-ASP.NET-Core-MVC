@@ -1,4 +1,4 @@
-﻿namespace EmployeeManagement.Models;
+﻿namespace CompanyManagement.Models.Employees;
 
 public class EmployeeRepository : IEmployeeRepository
 {
@@ -16,7 +16,7 @@ public class EmployeeRepository : IEmployeeRepository
             new Employee() { ID = 6, Name = "Sara", Department = "HR" }
         };
     }
-    
+
     public Employee GetEmployee(int ID)
     {
         // Tạo các nhân viên

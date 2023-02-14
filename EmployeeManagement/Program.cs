@@ -1,4 +1,4 @@
-using EmployeeManagement.Models;
+using CompanyManagement.Models.Employees;
 
 Console.WriteLine("Hello World!");
 var builder = WebApplication.CreateBuilder(args);

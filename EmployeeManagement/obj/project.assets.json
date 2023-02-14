@@ -13,9 +13,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\My-Repo\\GitHub\\TaQuangKhoi\\Learn\\Learn-ASP.NET-Core-MVC\\EmployeeManagement\\EmployeeManagement.csproj",
-      "projectName": "EmployeeManagement",
-      "projectPath": "C:\\My-Repo\\GitHub\\TaQuangKhoi\\Learn\\Learn-ASP.NET-Core-MVC\\EmployeeManagement\\EmployeeManagement.csproj",
+      "projectUniqueName": "C:\\My-Repo\\GitHub\\TaQuangKhoi\\Learn\\Learn-ASP.NET-Core-MVC\\EmployeeManagement\\CompanyManagement.csproj",
+      "projectName": "CompanyManagement",
+      "projectPath": "C:\\My-Repo\\GitHub\\TaQuangKhoi\\Learn\\Learn-ASP.NET-Core-MVC\\EmployeeManagement\\CompanyManagement.csproj",
       "packagesPath": "C:\\Users\\taqua\\.nuget\\packages\\",
       "outputPath": "C:\\My-Repo\\GitHub\\TaQuangKhoi\\Learn\\Learn-ASP.NET-Core-MVC\\EmployeeManagement\\obj\\",
       "projectStyle": "PackageReference",
