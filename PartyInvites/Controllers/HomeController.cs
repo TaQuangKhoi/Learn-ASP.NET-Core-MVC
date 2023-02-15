@@ -18,11 +18,13 @@ public class HomeController : Controller
         return View("MyView");
     }
     
+    [HttpGet]
     public IActionResult ResponseForm()
     {
         return View("ResponseForm");
     }
     
+    [HttpPost]
     public IActionResult ResponseForm(GuestResponse guestResponse)
     {
         Repository.AddResponse(guestResponse);

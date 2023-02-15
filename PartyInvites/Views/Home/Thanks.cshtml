@@ -1,0 +1,25 @@
+﻿@model PartyInvites.Models.GuestResponse
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Cảm ơn</title>
+</head>
+<body>
+<div>
+    <p><span class="badge badge-secondary">Cảm ơn</span> @Model.Name đã phản hồi</p>
+    @if (Model.WillAttend == true) { 
+        @:Thật vui vì bạn sẽ tham gia.
+    }
+    else {
+        @:Chúng tôi rất tiếc vì bạn không thể tham gia.
+    }
+    <a asp-controller="Home" asp-action="Index">Trở về trang chủ</a>
+</div>
+</body>
+</html>
