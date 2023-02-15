@@ -1,7 +1,6 @@
 using CompanyManagement.Models.Employees;
 using CompanyManagement.Models.Products;
 
-Console.WriteLine("Hello World!");
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
