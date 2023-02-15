@@ -22,6 +22,12 @@ public class HomeController : Controller
     {
         return View("ResponseForm");
     }
+    
+    public IActionResult ResponseForm(GuestResponse guestResponse)
+    {
+        Repository.AddResponse(guestResponse);
+        return View("Thanks", guestResponse); //Chuyển đến View Thanks
+    }
 
     public IActionResult Privacy()
     {
