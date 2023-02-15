@@ -1,6 +1,4 @@
-﻿@{
-    Layout = null;
-}
+﻿@model PartyInvites.Models.GuestResponse
 
 <!DOCTYPE html>
 
@@ -11,6 +9,30 @@
 <body>
 <div>
     <h1>Response Form</h1>
+    <form asp-action="ResponseForm">
+        <div class="form-group">
+            <label asp-for="Name">Nhập tên của bạn:</label>
+            <input asp-for="Name" type="text" class="form-control" id="exampleInputName" aria-describedby="emailHelp">
+            <small id="emailHelp" class="form-text text-muted">Chúng tôi sẽ không bao giờ chia sẽ tên của bạn với bất kỳ ai.</small>
+        </div>
+        <div class="form-group">
+            <label asp-for="Email">Nhập Email của bạn:</label>
+            <input asp-for="Email" type="email" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp">
+            <small id="emailHelp" class="form-text text-muted">Chúng tôi sẽ không bao giờ chia sẽ email của bạn với bất kỳ ai.</small>
+        </div>
+        <div class="form-group">
+            <label asp-for="Phone">Nhập SĐT của bạn:</label>
+            <input asp-for="Phone" type="text" class="form-control" id="exampleInputPhone" aria-describedby="emailHelp">
+            <small id="emailHelp" class="form-text text-muted">Chúng tôi sẽ không bao giờ chia sẽ sđt của bạn với bất kỳ ai.</small>
+        </div>
+        <div class="form-group">
+            <select asp-for="WillAttend" class="form-control" id="select1">
+                <option value="true">Oke, tui sẽ tham gia</option>
+                <option value="false">Trời, tui bận rồi</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 </div>
 </body>
 </html>
