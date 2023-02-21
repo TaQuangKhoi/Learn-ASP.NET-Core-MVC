@@ -4,9 +4,9 @@ public class EmployeeRepository : IEmployeeRepository
 {
     private readonly List<Employee> _employeeList;
 
-    private AppDbContext _context;
+    // private AppDbContext _context;
 
-    public EmployeeRepository(AppDbContext context)
+    public EmployeeRepository(/*AppDbContext context*/)
     {
         _employeeList = new List<Employee>
         {
@@ -17,14 +17,16 @@ public class EmployeeRepository : IEmployeeRepository
             new Employee() { ID = 5, Name = "David", Department = "IT" },
             new Employee() { ID = 6, Name = "Sara", Department = "HR" }
         };
-        _context = context;
+        // _context = context;
     }
 
     public Employee GetEmployee(int ID)
     {
         // Tạo các nhân viên
-        return _context.Employees.Find(ID);
+        // return  _context.Employees.Find(ID) ;
+        return new Employee();
     }
+    
 
     public IEnumerable<Employee> GetAllEmployees()
     {
@@ -33,8 +35,8 @@ public class EmployeeRepository : IEmployeeRepository
 
     public Employee Add(Employee employee)
     {
-        _context.Employees.Add(employee);
-        _context.SaveChanges();
+        // _context.Employees.Add(employee);
+        // _context.SaveChanges();
         return employee;
     }
 
