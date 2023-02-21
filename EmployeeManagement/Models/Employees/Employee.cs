@@ -1,4 +1,5 @@
-﻿namespace CompanyManagement.Models.Employees
+﻿
+namespace CompanyManagement.Models.Employees
 {
     public class Employee
     {
