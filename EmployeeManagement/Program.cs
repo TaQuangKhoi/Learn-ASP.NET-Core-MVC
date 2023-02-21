@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-// builder.Services.AddDbContext<AppDbContext>(optionsAction =>
-//     optionsAction.UseSqlServer(builder.Configuration.GetConnectionString("LocalDb"))
-// );
+builder.Services.AddDbContext<AppDbContext>(optionsAction =>
+    optionsAction.UseSqlServer(builder.Configuration.GetConnectionString("LocalDb"))
+);
 // builder.Services.AddScoped<AppDbContext>(provider => provider.GetService<AppDbContext>());
 builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<IEmployeeRepository, EmployeeRepository>();
