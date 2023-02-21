@@ -23,7 +23,7 @@ public class EmployeeRepository : IEmployeeRepository
     public Employee GetEmployee(int ID)
     {
         // Tạo các nhân viên
-        // return _context.Find()
+        return _context.Employees.Find(ID);
     }
 
     public IEnumerable<Employee> GetAllEmployees()
@@ -33,7 +33,9 @@ public class EmployeeRepository : IEmployeeRepository
 
     public Employee Add(Employee employee)
     {
-        throw new NotImplementedException();
+        _context.Employees.Add(employee);
+        _context.SaveChanges();
+        return employee;
     }
 
     public Employee Update(Employee employee)

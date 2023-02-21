@@ -27,9 +27,16 @@ namespace EmployeeManagement.Controllers
             return View(_employeeRepository.GetAllEmployees());
         }
 
-        public string Hello()
+        [HttpGet]
+        public IActionResult AddEmployee()
         {
-            return "Hello";
+            return View();
+        }
+        
+        [HttpPost]
+        public IActionResult AddEmployee(Employee employee)
+        {
+            return View(_employeeRepository.Add(employee));
         }
     }
 }
