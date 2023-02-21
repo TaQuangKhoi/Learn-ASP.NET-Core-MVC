@@ -11,7 +11,7 @@ builder.Services.AddDbContext<AppDbContext>(optionsAction =>
 );
 // builder.Services.AddScoped<AppDbContext>(provider => provider.GetService<AppDbContext>());
 builder.Services.AddControllersWithViews();
-builder.Services.AddSingleton<IEmployeeRepository, EmployeeRepository>();
+builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 builder.Services.AddSingleton<IProductRepository, ProductRepository>();
 
 var app = builder.Build();

@@ -7,11 +7,21 @@ namespace CompanyManagement.Models.Employees
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) {}
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            //use this to configure the contex
+        }
+ 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            //use this to configure the model
+        }
+        
         // Tên tương tự với bảng trong CSDL
         public DbSet<Employee> Employees { get; set; }
     }
     
-    public class YourDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>
+    public class AppDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>
     {
         public AppDbContext CreateDbContext(string[] args)
         {
@@ -21,7 +31,7 @@ namespace CompanyManagement.Models.Employees
             Console.WriteLine("Thử nghiệm");
             Console.WriteLine("connectionString: " + connectionString);
             optionsBuilder.UseSqlServer(
-                connectionString
+                "Server=(localdb)\\mssqllocaldb;Database=CompanyManagement;Trusted_Connection=True;MultipleActiveResultSets=true"
                 );
 
             return new AppDbContext(optionsBuilder.Options);
