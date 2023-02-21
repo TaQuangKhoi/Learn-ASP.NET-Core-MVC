@@ -16,7 +16,13 @@ namespace CompanyManagement.Models.Employees
         public AppDbContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
-            optionsBuilder.UseSqlServer("your connection string");
+            ConfigurationManager config = new ConfigurationManager();
+            var connectionString = config.GetConnectionString("LocalDb");
+            Console.WriteLine("Thử nghiệm");
+            Console.WriteLine("connectionString: " + connectionString);
+            optionsBuilder.UseSqlServer(
+                connectionString
+                );
 
             return new AppDbContext(optionsBuilder.Options);
         }

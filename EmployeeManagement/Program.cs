@@ -3,10 +3,11 @@ using CompanyManagement.Models.Products;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+var connectionString = builder.Configuration.GetConnectionString("LocalDb");
 
 // Add services to the container.
 builder.Services.AddDbContext<AppDbContext>(optionsAction =>
-    optionsAction.UseSqlServer(builder.Configuration.GetConnectionString("LocalDb"))
+    optionsAction.UseSqlServer(connectionString)
 );
 // builder.Services.AddScoped<AppDbContext>(provider => provider.GetService<AppDbContext>());
 builder.Services.AddControllersWithViews();
