@@ -27,8 +27,11 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult ResponseForm(GuestResponse guestResponse)
     {
+        // Using the ModelState.IsValid property to check if the model is valid
+        if (!ModelState.IsValid) return View();
         Repository.AddResponse(guestResponse);
         return View("Thanks", guestResponse); //Chuyển đến View Thanks
+        // There is a validation error
     }
     
     public IActionResult ListResponses()

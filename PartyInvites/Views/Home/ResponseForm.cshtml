@@ -1,4 +1,4 @@
-﻿@model PartyInvites.Models.GuestResponse
+﻿@model GuestResponse
 
 <!DOCTYPE html>
 
@@ -9,7 +9,8 @@
 <body>
 <div>
     <h1>Response Form</h1>
-    <form asp-action="ResponseForm">
+    <form asp-action="ResponseForm" method="post">
+        <div asp-validation-summary="All" class="text-danger"></div>
         <div class="form-group">
             <label asp-for="Name">Nhập tên của bạn:</label>
             <input asp-for="Name" type="text" class="form-control" id="exampleInputName" aria-describedby="nameHelp">
@@ -31,8 +32,7 @@
                 <option value="false">Trời, tui bận rồi</option>
             </select>
         </div>
-        <button type="submit" class="btn btn-primary"
-                >Submit</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
 </body>
