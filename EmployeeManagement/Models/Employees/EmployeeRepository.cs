@@ -4,9 +4,9 @@ public class EmployeeRepository : IEmployeeRepository
 {
     private readonly List<Employee> _employeeList;
 
-    // private AppDbContext _context;
+    private AppDbContext _context;
 
-    public EmployeeRepository(/*AppDbContext context*/)
+    public EmployeeRepository()
     {
         _employeeList = new List<Employee>
         {
