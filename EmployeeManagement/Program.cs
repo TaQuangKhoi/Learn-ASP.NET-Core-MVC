@@ -1,5 +1,6 @@
 using CompanyManagement.Models.Employees;
 using CompanyManagement.Models.Products;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +8,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<IEmployeeRepository, EmployeeRepository>();
 builder.Services.AddSingleton<IProductRepository, ProductRepository>();
+builder.Services.AddDbContext<AppDbContext>(optionsAction =>
+    optionsAction.UseSqlServer("name=ConnectionStrings:LocalDb")
+    );
 
 var app = builder.Build();
 

@@ -2,9 +2,11 @@
 
 public class EmployeeRepository : IEmployeeRepository
 {
-    private List<Employee> _employeeList;
+    private readonly List<Employee> _employeeList;
 
-    public EmployeeRepository()
+    private AppDbContext _context;
+
+    public EmployeeRepository(AppDbContext context)
     {
         _employeeList = new List<Employee>
         {
@@ -15,16 +17,32 @@ public class EmployeeRepository : IEmployeeRepository
             new Employee() { ID = 5, Name = "David", Department = "IT" },
             new Employee() { ID = 6, Name = "Sara", Department = "HR" }
         };
+        _context = context;
     }
 
     public Employee GetEmployee(int ID)
     {
         // Tạo các nhân viên
-        return _employeeList.FirstOrDefault(e => e.ID == ID);
+        // return _context.Find()
     }
 
     public IEnumerable<Employee> GetAllEmployees()
     {
         return _employeeList;
+    }
+
+    public Employee Add(Employee employee)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Employee Update(Employee employee)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Employee Delete(Employee employee)
+    {
+        throw new NotImplementedException();
     }
 }
