@@ -1,9 +1,5 @@
 ﻿@model PartyInvites.Models.GuestResponse
 
-@{
-    Layout = null;
-}
-
 <!DOCTYPE html>
 
 <html>
@@ -12,7 +8,7 @@
 </head>
 <body>
 <div>
-    <p><span class="badge badge-secondary">Cảm ơn</span> @Model.Name đã phản hồi</p>
+    <p>Cảm ơn <strong>@Model.Name</strong> đã phản hồi</p>
     @if (Model.WillAttend == true) { 
         @:Thật vui vì bạn sẽ tham gia.
     }

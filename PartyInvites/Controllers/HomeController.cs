@@ -30,6 +30,11 @@ public class HomeController : Controller
         Repository.AddResponse(guestResponse);
         return View("Thanks", guestResponse); //Chuyển đến View Thanks
     }
+    
+    public IActionResult ListResponses()
+    {
+        return View(Repository.Responses.Where(r => r.WillAttend == true));
+    }
 
     public IActionResult Privacy()
     {
