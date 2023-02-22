@@ -26,12 +26,16 @@
                 <td>@employee.ID</td>
                 <td>@employee.Name</td>
                 <td>@employee.Department</td>
+                <td><button type="button" class="btn btn-info">Cập Nhật</button></td>
+                <td><button type="button" class="btn btn-danger">Xóa</button></td>
             </tr>
         }
-
+        
         </tbody>
     </table>
-    <button type="button" class="btn btn-primary" asp-action="AddEmployee">Thêm Nhân Viên</button>
+    <button type="button" class="btn btn-primary" >
+        <a asp-action="AddEmployee" class="text-decoration-none text-white">Thêm Nhân Viên</a>
+    </button>
 </div>
 </body>
 </html>

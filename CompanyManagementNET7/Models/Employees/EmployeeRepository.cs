@@ -53,6 +53,8 @@ public class EmployeeRepository : IEmployeeRepository
 
     public Employee Delete(Employee employee)
     {
-        throw new NotImplementedException();
+        _context.Employees.Remove(employee);
+        _context.SaveChanges();
+        return employee;
     }
 }
