@@ -34,7 +34,6 @@ namespace CompanyManagement.Models.Employees
                 "Server=(localdb)\\mssqllocaldb;Database=EmployeesDB;" +
                 "Trusted_Connection=True;MultipleActiveResultSets=true"
                 );
-
             return new AppDbContext(optionsBuilder.Options);
         }
     }

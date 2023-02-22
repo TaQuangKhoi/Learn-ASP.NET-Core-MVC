@@ -46,7 +46,9 @@ public class EmployeeRepository : IEmployeeRepository
 
     public Employee Update(Employee employee)
     {
-        throw new NotImplementedException();
+        _context.Employees.Update(employee);
+        _context.SaveChanges();
+        return employee;
     }
 
     public Employee Delete(Employee employee)
