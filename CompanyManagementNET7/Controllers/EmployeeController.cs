@@ -36,7 +36,14 @@ namespace CompanyManagement.Controllers
         [HttpPost]
         public IActionResult AddEmployee(Employee employee)
         {
-            return View(_employeeRepository.Add(employee));
+            _employeeRepository.Add(employee);
+            return View("List", _employeeRepository.GetAllEmployees());
         }
+        
+        // [HttpPost]
+        // public IActionResult UpdateEmployee(Employee employee)
+        // {
+        //     return View( _employeeRepository.Update(employee));
+        // }
     }
 }
