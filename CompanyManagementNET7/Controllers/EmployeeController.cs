@@ -27,7 +27,9 @@ namespace CompanyManagement.Controllers
         {
             // return a view with IEnumerable<Employee>
             ViewBag.PageTitle = "Employee List";
-            return View(_employeeRepository.GetAllEmployees());
+            IEnumerable<Employee> employees = _employeeRepository.GetAllEmployees();
+            
+            return View(employees);
         }
 
         [HttpGet]
@@ -46,7 +48,8 @@ namespace CompanyManagement.Controllers
         [HttpGet]
         public IActionResult UpdateEmployee(int ID)
         {
-            _logger.LogInformation("Update Employee ID");
+            _logger.LogInformation("Update Employee HttpGet");
+            _logger.LogInformation("ID: " + ID);
             return View("UpdateEmployee", _employeeRepository.GetEmployee(ID));
         }
         

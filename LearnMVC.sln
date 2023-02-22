@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PartyInvites", "PartyInvite
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompanyManagementNET7", "CompanyManagementNET7\CompanyManagementNET7.csproj", "{52659E0D-A94F-4895-A260-8040A3AB6EA5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductManager", "ProductManager\ProductManager.csproj", "{DC5D9B15-C1A9-4E78-AF47-83E8FDB9C214}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductManagement", "ProductManagement\ProductManagement.csproj", "{DC5D9B15-C1A9-4E78-AF47-83E8FDB9C214}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
