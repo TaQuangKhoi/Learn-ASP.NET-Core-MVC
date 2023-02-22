@@ -7,8 +7,11 @@ namespace CompanyManagement.Controllers
     {
         private IEmployeeRepository _employeeRepository;
         
-        public EmployeeController(IEmployeeRepository employeeRepository)
+        private readonly ILogger _logger;
+        
+        public EmployeeController(IEmployeeRepository employeeRepository, ILogger<EmployeeController> logger)
         {
+            _logger = logger;
             _employeeRepository = employeeRepository;
         }
 
@@ -39,11 +42,27 @@ namespace CompanyManagement.Controllers
             _employeeRepository.Add(employee);
             return View("List", _employeeRepository.GetAllEmployees());
         }
+
+        [HttpGet]
+        public IActionResult UpdateEmployee(int ID)
+        {
+            _logger.LogInformation("Update Employee ID");
+            return View("UpdateEmployee", _employeeRepository.GetEmployee(ID));
+        }
         
-        // [HttpPost]
-        // public IActionResult UpdateEmployee(Employee employee)
-        // {
-        //     return View( _employeeRepository.Update(employee));
-        // }
+        [HttpPost]
+        public IActionResult UpdateEmployee(Employee employee)
+        {
+            _logger.LogInformation("Update Employee");
+            _employeeRepository.Update(employee);
+            return View("List", _employeeRepository.GetAllEmployees());
+        }
+        
+        public IActionResult DeleteEmployee(int ID)
+        {
+            _logger.LogInformation("Delete Employee");
+            _employeeRepository.Delete(_employeeRepository.GetEmployee(ID));
+            return View("List", _employeeRepository.GetAllEmployees());
+        }
     }
 }

@@ -26,8 +26,12 @@
                 <td>@employee.ID</td>
                 <td>@employee.Name</td>
                 <td>@employee.Department</td>
-                <td><button type="button" class="btn btn-info">Cập Nhật</button></td>
-                <td><button type="button" class="btn btn-danger">Xóa</button></td>
+                <td><button type="button" class="btn btn-info">
+                    <a asp-action="UpdateEmployee" asp-route-ID="@employee.ID">Cập Nhật</a>
+                </button></td>
+                <td><button type="button" class="btn btn-danger">
+                    <a asp-action="DeleteEmployee" asp-route-ID="@employee.ID">Xóa</a>
+                </button></td>
             </tr>
         }
         
