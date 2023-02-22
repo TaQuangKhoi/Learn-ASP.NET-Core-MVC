@@ -31,7 +31,8 @@ namespace CompanyManagement.Models.Employees
             Console.WriteLine("Thử nghiệm");
             Console.WriteLine("connectionString: " + connectionString);
             optionsBuilder.UseSqlServer(
-                "Server=(localdb)\\mssqllocaldb;Database=CompanyManagement;Trusted_Connection=True;MultipleActiveResultSets=true"
+                "Server=(localdb)\\mssqllocaldb;Database=EmployeesDB;" +
+                "Trusted_Connection=True;MultipleActiveResultSets=true"
                 );
 
             return new AppDbContext(optionsBuilder.Options);
