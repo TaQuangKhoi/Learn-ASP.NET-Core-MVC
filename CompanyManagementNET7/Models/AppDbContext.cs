@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
+using CompanyManagement.Models.Employees;
+using CompanyManagement.Models.Products;
 
-namespace CompanyManagement.Models.Employees
+namespace CompanyManagement.Models
 {
     public class AppDbContext : DbContext
     {
@@ -19,6 +21,8 @@ namespace CompanyManagement.Models.Employees
         
         // Tên tương tự với bảng trong CSDL
         public DbSet<Employee> Employees { get; set; }
+        
+        public DbSet<Product> Products { get; set; }
     }
     
     public class AppDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>
@@ -26,14 +30,14 @@ namespace CompanyManagement.Models.Employees
         public AppDbContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
-            ConfigurationManager config = new ConfigurationManager();
-            var connectionString = config.GetConnectionString("LocalDb");
+            
             Console.WriteLine("Thử nghiệm");
-            Console.WriteLine("connectionString: " + connectionString);
+            
             optionsBuilder.UseSqlServer(
                 "Server=(localdb)\\mssqllocaldb;Database=EmployeesDB;" +
                 "Trusted_Connection=True;MultipleActiveResultSets=true"
                 );
+            
             return new AppDbContext(optionsBuilder.Options);
         }
     }

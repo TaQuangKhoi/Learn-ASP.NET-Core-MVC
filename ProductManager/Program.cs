@@ -1,19 +1,7 @@
-using CompanyManagement.Models;
-using CompanyManagement.Models.Employees;
-using CompanyManagement.Models.Products;
-using Microsoft.EntityFrameworkCore;
-
 var builder = WebApplication.CreateBuilder(args);
-var connectionString = builder.Configuration.GetConnectionString("LocalDb");
 
 // Add services to the container.
-builder.Services.AddDbContext<AppDbContext>(optionsAction =>
-    optionsAction.UseSqlServer(connectionString)
-);
-// builder.Services.AddScoped<AppDbContext>(provider => provider.GetService<AppDbContext>());
 builder.Services.AddControllersWithViews();
-builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
-builder.Services.AddSingleton<IProductRepository, ProductRepository>();
 
 var app = builder.Build();
 
