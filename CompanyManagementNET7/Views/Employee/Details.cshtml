@@ -1,0 +1,28 @@
+﻿@model CompanyManagement.Models.Employees.Employee
+
+<html>
+<head>
+    <meta charset="utf-8" content="width=device-width">
+    <title>Employee Details</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+<p>Employee Details</p>
+<table class="table">
+    <thead class="thead-dark">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Department</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>@Model.ID</td>
+        <td>@Model.Name</td>
+        <td>@Model.Department</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
