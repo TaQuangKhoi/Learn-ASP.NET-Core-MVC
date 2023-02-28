@@ -9,39 +9,33 @@
 </head>
 <body>
 <div>
-    <h1>List all Employees</h1>
-    <button type="button" class="btn btn-primary" >
-            <a asp-action="AddEmployee" class="text-decoration-none text-white">Thêm Nhân Viên</a>
-        </button>
-    <table class="table">
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Department</th>
-        </tr>
-        </thead>
-        <tbody>
-
-        @foreach (var employee in Model)
-        {
-            <tr>
-                <td>@employee.ID</td>
-                <td>@employee.Name</td>
-                <td>@employee.Department</td>
-                <td>@employee.PhotoPath</td>
-                <td><button type="button" class="btn btn-info">
-                    <a asp-action="UpdateEmployee" asp-route-ID="@employee.ID">Cập Nhật</a>
-                </button></td>
-                <td><button type="button" class="btn btn-danger">
-                    <a asp-action="DeleteEmployee" asp-route-ID="@employee.ID">Xóa</a>
-                </button></td>
-            </tr>
-        }
-        
-        </tbody>
-    </table>
     
+    <h1>List all Employees</h1>
+    <button type="button" class="btn btn-primary">
+        <a asp-action="AddEmployee" class="text-decoration-none text-white">Thêm Nhân Viên</a>
+    </button>
+    
+    <div class="container">
+        @foreach (var employee in Model)
+            {
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="@employee.PhotoPath" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">@employee.Name</h5>
+                        <p class="card-text">@employee.ID</p>
+                        <p class="card-text">@employee.Department</p>
+                        <button type="button" class="btn btn-info">
+                            <a asp-action="UpdateEmployee" asp-route-ID="@employee.ID">Cập Nhật</a>
+                        </button>
+                        <button type="button" class="btn btn-danger">
+                            <a asp-action="DeleteEmployee" asp-route-ID="@employee.ID">Xóa</a>
+                        </button>
+                    </div>
+                </div>
+            }
+    </div>
+    
+
 </div>
 </body>
 </html>

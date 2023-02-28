@@ -83,7 +83,7 @@ namespace CompanyManagement.Controllers
             //B2: Upload hình của nhân viên lên server
             // Trong thư mục wwwroot, thêm thư mục images
             
-            
+            ViewData["WebRootPath"] = path;
             return View("List", _employeeRepository.GetAllEmployees());
         }
 

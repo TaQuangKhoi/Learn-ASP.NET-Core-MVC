@@ -10,11 +10,6 @@
 <div>
     <form asp-action="AddEmployee" enctype="multipart/form-data" method="post">
         <div asp-validation-summary="All" class="text-danger"></div>
-        @* <div class="form-group"> *@
-        @*             <label asp-for="ID">Nhập ID:</label> *@
-        @*             <input asp-for="ID" type="text" class="form-control" id="exampleInputPhone" aria-describedby="sdtHelp"> *@
-        @*             <small id="emailHelp" class="form-text text-muted">Chúng tôi sẽ không bao giờ chia sẽ sđt của bạn với bất kỳ ai.</small> *@
-        @*         </div> *@
         <div class="form-group">
             <label asp-for="Name">Nhập tên Nhân viên:</label>
             <input asp-for="Name" type="text" class="form-control" id="exampleInputName" aria-describedby="nameHelp">
