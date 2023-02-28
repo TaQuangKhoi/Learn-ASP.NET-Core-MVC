@@ -28,7 +28,6 @@ namespace CompanyManagement.Controllers
             // return a view with IEnumerable<Employee>
             ViewBag.PageTitle = "Employee List";
             IEnumerable<Employee> employees = _employeeRepository.GetAllEmployees();
-            
             return View(employees);
         }
 

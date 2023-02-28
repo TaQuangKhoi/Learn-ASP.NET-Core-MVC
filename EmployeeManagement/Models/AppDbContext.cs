@@ -22,7 +22,7 @@ namespace CompanyManagement.Models
         // Tên tương tự với bảng trong CSDL
         public DbSet<Employee> Employees { get; set; }
         
-        public DbSet<Product> Products { get; set; }
+        // public DbSet<Product> Products { get; set; }
     }
     
     public class AppDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>

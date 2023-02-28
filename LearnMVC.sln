@@ -5,7 +5,7 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PartyInvites", "PartyInvites\PartyInvites.csproj", "{1992BE0F-6B23-40BE-B570-590D47992022}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompanyManagementNET7", "CompanyManagementNET7\CompanyManagementNET7.csproj", "{52659E0D-A94F-4895-A260-8040A3AB6EA5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeManagement", "EmployeeManagement\EmployeeManagement.csproj", "{52659E0D-A94F-4895-A260-8040A3AB6EA5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductManagement", "ProductManagement\ProductManagement.csproj", "{DC5D9B15-C1A9-4E78-AF47-83E8FDB9C214}"
 EndProject
