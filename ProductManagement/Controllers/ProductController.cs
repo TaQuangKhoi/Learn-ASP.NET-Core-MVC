@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProductManager.Models;
+using ProductManager.Models.Products;
 
 namespace ProductManager.Controllers
 {
@@ -39,7 +40,7 @@ namespace ProductManager.Controllers
             
             _productRepository.Add(product);
             ViewData["WebRootPath"] = path;
-            return View("List", _productRepository.GetAllEmployees());
+            return View("List", _productRepository.GetAllProducts());
         }
         
         public IActionResult Details(int ID)
