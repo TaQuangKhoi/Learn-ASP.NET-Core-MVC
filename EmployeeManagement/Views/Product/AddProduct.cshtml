@@ -1,0 +1,33 @@
+﻿@model ProductManagement.Models.ViewModels.CreateViewModel
+
+@{
+    ViewData["Title"] = "Thêm Sản Phẩm";
+}
+
+<div>
+    <form asp-action="AddProduct" enctype="multipart/form-data" method="post">
+        <div class="form-group">
+            <label asp-for="Name">Nhập tên:</label>
+            <input asp-for="Name" type="text" class="form-control">
+        </div>
+        <div class="form-group">
+            <label asp-for="Description">Mô tả:</label>
+            <input asp-for="Description" type="text" class="form-control">
+        </div>
+        <div class="form-group">
+            <label asp-for="Price">Giá:</label>
+            <input asp-for="Price" type="text" class="form-control">
+        </div>
+        <div class="form-group">
+            <label asp-for="Category">Phân loại:</label>
+            <input asp-for="Category" type="text" class="form-control">
+        </div>
+        <div class="form-group">
+            <label asp-for="Photo">Hình ảnh</label>
+            <input asp-for="Photo" type="file" class="form-control" placeholder="Photo">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Tạo</button>
+        </div>
+    </form>
+</div>
