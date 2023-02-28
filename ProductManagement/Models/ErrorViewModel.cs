@@ -1,4 +1,4 @@
-namespace ProductManager.Models;
+namespace ProductManagement.Models;
 
 public class ErrorViewModel
 {

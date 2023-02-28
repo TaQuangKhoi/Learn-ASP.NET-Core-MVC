@@ -4,7 +4,7 @@
         <TargetFramework>net7.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
-        <RootNamespace>ProductManager</RootNamespace>
+        <RootNamespace>ProductManagement</RootNamespace>
     </PropertyGroup>
 
 </Project>

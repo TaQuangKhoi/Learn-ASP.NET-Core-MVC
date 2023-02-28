@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace ProductManager.Views.Product;
+namespace ProductManagement.Views.Product;
 
 public class AddProduct : PageModel
 {

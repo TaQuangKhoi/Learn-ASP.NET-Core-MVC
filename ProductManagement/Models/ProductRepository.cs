@@ -1,4 +1,4 @@
-﻿namespace ProductManager.Models.Products
+﻿namespace ProductManagement.Models.Products
 {
     public class ProductRepository : IProductRepository
     {
