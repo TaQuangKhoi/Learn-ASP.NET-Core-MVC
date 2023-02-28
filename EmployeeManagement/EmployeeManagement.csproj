@@ -24,4 +24,10 @@
     <Folder Include="wwwroot\images" />
   </ItemGroup>
 
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Product\AddProduct.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Product\Details.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Product\List.cshtml" />
+  </ItemGroup>
+
 </Project>

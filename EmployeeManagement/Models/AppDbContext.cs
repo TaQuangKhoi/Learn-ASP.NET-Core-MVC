@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using CompanyManagement.Models.Employees;
-using CompanyManagement.Models.Products;
 
 namespace CompanyManagement.Models
 {
@@ -22,7 +21,6 @@ namespace CompanyManagement.Models
         // Tên tương tự với bảng trong CSDL
         public DbSet<Employee> Employees { get; set; }
         
-        // public DbSet<Product> Products { get; set; }
     }
     
     public class AppDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>
