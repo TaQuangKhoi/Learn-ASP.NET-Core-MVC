@@ -1,4 +1,4 @@
-﻿namespace ProductManager.ViewModels.Models;
+﻿namespace ProductManager.Models.ViewModels;
 
 public class CreateViewModel
 {

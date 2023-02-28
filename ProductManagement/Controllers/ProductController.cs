@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProductManager.Models;
+using ProductManager.Models.ViewModels;
 using ProductManager.Models.Products;
 
 namespace ProductManager.Controllers
