@@ -10,6 +10,9 @@
 <body>
 <div>
     <h1>List all Employees</h1>
+    <button type="button" class="btn btn-primary" >
+            <a asp-action="AddEmployee" class="text-decoration-none text-white">Thêm Nhân Viên</a>
+        </button>
     <table class="table">
         <thead>
         <tr>
@@ -26,6 +29,7 @@
                 <td>@employee.ID</td>
                 <td>@employee.Name</td>
                 <td>@employee.Department</td>
+                <td>@employee.PhotoPath</td>
                 <td><button type="button" class="btn btn-info">
                     <a asp-action="UpdateEmployee" asp-route-ID="@employee.ID">Cập Nhật</a>
                 </button></td>
@@ -37,9 +41,7 @@
         
         </tbody>
     </table>
-    <button type="button" class="btn btn-primary" >
-        <a asp-action="AddEmployee" class="text-decoration-none text-white">Thêm Nhân Viên</a>
-    </button>
+    
 </div>
 </body>
 </html>
