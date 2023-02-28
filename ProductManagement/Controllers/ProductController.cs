@@ -1,8 +1,7 @@
-﻿using CompanyManagement.Models.Products;
-using CompanyManagement.Models.ViewModels;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using ProductManager.Models;
 
-namespace CompanyManagement.Controllers
+namespace ProductManager.Controllers
 {
     public class ProductController : Controller
     {
@@ -18,52 +17,30 @@ namespace CompanyManagement.Controllers
         [HttpGet] // Khi load lên thì chỉ hiện nơi nhập data
         public IActionResult AddProduct()
         {
-            string path = _webHost.ContentRootPath;
-            // _logger.LogInformation("ContentRootPath" + path);
             return View();
         }
         
         [HttpPost] // Khi submit thì sẽ thực hiện hành động
         public IActionResult AddProduct(CreateViewModel model)
         {
-            _logger.LogInformation("Add Employee");
-            string fileName = "";
+            string fileName = null;
             string path = _webHost.WebRootPath + "\\images\\";
-            
-            
-            if (model.Photo is null)
-            {
-                _logger.LogInformation("Photo is null");
-                fileName = "null";
-            }
-            else
-            {
-                fileName = model.Photo.FileName;
-            }
+            fileName = model.Photo.FileName;
             
             model.Photo.CopyTo(new FileStream(path + fileName, FileMode.Create));
             
-            _logger.LogInformation("fileName" + fileName);
-            _logger.LogInformation("WebRootPath" + path);
-
-            Employee employee = new Employee()
+            Product product = new Product()
             {
                 Name = model.Name,
-                Department = model.Department,
+                Category = model.Category,
+                Price = model.Price,
                 PhotoPath = fileName
             };
             
-            // B1: Thêm 1 nhân viên mới
-            _employeeRepository.Add(employee);
-            
-            //B2: Upload hình của nhân viên lên server
-            // Trong thư mục wwwroot, thêm thư mục images
-            
+            _productRepository.Add(product);
             ViewData["WebRootPath"] = path;
-            return View("List", _employeeRepository.GetAllEmployees());
+            return View("List", _productRepository.GetAllEmployees());
         }
-        
-        
         
         public IActionResult Details(int ID)
         {
