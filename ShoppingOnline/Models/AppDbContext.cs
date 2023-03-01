@@ -7,6 +7,7 @@ public class AppDbContext : DbContext
 {
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) {}
     
+    // Thiết lập model dùng để tạo DB
     public DbSet<Product> Products { get; set; }
     
     public class AppDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>
