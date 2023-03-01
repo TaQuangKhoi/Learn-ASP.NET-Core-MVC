@@ -16,7 +16,7 @@ public class AppDbContext : DbContext
             var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
             
             optionsBuilder.UseSqlite(
-                "Data Source=c:\\mydb.db;Version=3;"
+                "Data Source=c:\\foo_db\\mydb.db;"
             );
             
             return new AppDbContext(optionsBuilder.Options);

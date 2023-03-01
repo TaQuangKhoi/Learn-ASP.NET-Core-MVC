@@ -1,4 +1,12 @@
+using Microsoft.EntityFrameworkCore;
+using ShoppingOnline.Models;
+
 var builder = WebApplication.CreateBuilder(args);
+
+var connectionString = builder.Configuration.GetConnectionString("Sqlite");
+builder.Services.AddDbContext<AppDbContext>(optionsAction =>
+    optionsAction.UseSqlite(connectionString)
+);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
