@@ -1,0 +1,45 @@
+﻿@model ShoppingOnline.Models.ViewModals.CreateViewModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "_Layout";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<form asp-action="Create" enctype="multipart/form-data" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Name">Name:</label>
+        <input asp-for="Name" type="text" class="form-control" id="exampleInputName" aria-describedby="nameHelp">
+        <small id="emailHelp" class="form-text text-muted">Chúng tôi sẽ không bao giờ chia sẽ tên của bạn với bất kỳ ai.</small>
+    </div>
+    <div class="form-group">
+        <label asp-for="ShortDescription">ShortDescription:</label>
+        <input asp-for="ShortDescription" type="text" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp">
+        <small id="emailHelp" class="form-text text-muted">Chúng tôi sẽ không bao giờ chia sẽ email của bạn với bất kỳ ai.</small>
+    </div>
+    <div class="form-group">
+        <label asp-for="LongDescription">LongDescription: </label>
+        <input asp-for="LongDescription" type="text-area" class="form-control" placeholder="PhotoPath">
+    </div>
+    <div class="form-group">
+        <label asp-for="Category">Category: </label>
+        <input asp-for="Category" type="text" class="form-control" placeholder="PhotoPath">
+    </div>
+    <div class="form-group">
+        <label asp-for="Price">Price: </label>
+        <input asp-for="Price" type="number" class="form-control" placeholder="PhotoPath">
+    </div>
+    <div class="form-group">
+        <label asp-for="Stock">Stock: </label>
+        <input asp-for="Stock" type="number" class="form-control" placeholder="PhotoPath">
+    </div>
+    <div class="form-group">
+        <label asp-for="Image">File: </label>
+        <input asp-for="Image" type="file" class="form-control" placeholder="PhotoPath">
+    </div>
+    <div class="form-group p-5">
+        <button type="submit" class="btn btn-primary">Tạo</button>
+    </div>
+</form>

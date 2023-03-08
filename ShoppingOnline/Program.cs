@@ -8,6 +8,8 @@ builder.Services.AddDbContext<AppDbContext>(optionsAction =>
     optionsAction.UseSqlite(connectionString)
 );
 
+builder.Services.AddScoped<IProductInterface, ProductRepository>();
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
