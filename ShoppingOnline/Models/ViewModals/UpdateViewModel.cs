@@ -24,5 +24,5 @@ public class UpdateViewModel
     [Required(ErrorMessage = "Please enter a stock")]
     public string? Stock { get; set; }
     
-    public  IFormFile? Image { get; set; }
+    public  IFormFile Image { get; set; }
 }

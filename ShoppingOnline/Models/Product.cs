@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 
 namespace ShoppingOnline.Models;
 
@@ -24,6 +25,6 @@ public class Product
     [Required(ErrorMessage = "Please enter a stock")]
     public string? Stock { get; set; }
     
-    public string? ImageUrl { get; set; }
+    public string ImageUrl { get; set; }
     
 }

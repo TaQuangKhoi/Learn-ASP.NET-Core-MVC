@@ -38,9 +38,12 @@ public class HomeController : Controller
     {
         if (ModelState.IsValid)
         {
-            string path = _webHost.WebRootPath + "\\images\\";
-            var fileName = model.Image.FileName;
-            model.Image.CopyTo(new FileStream(path + fileName, FileMode.Create));
+            string fileName = "";
+            if (model.Image != null)
+            {
+                IFormFile image = model.Image;
+                ProcessImage(image, ref fileName);
+            }
             Product product = new Product()
             {
                 Name = model.Name,
@@ -88,12 +91,16 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult SaveUpdate(UpdateViewModel vm)
     {
-        _logger.LogInformation("Update Employee");
-        if (ModelState.IsValid)
-        {
-            string path = _webHost.WebRootPath + "\\images\\";
-            var fileName = vm.Image.FileName;
-            vm.Image.CopyTo(new FileStream(path + fileName, FileMode.Create));
+        _logger.LogInformation("Save Update Employee");
+        // if (ModelState.IsValid) {
+            _logger.LogInformation("Model is valid");
+            string fileName = "";
+            if (vm.Image != null)
+            {
+                IFormFile image = vm.Image;
+                ProcessImage(image, ref fileName);
+            }
+            
             Product product = new Product()
             {
                 Id = vm.Id,
@@ -107,7 +114,11 @@ public class HomeController : Controller
             };
             _productInterface.UpdateProduct(product);
             return RedirectToAction("Index");
-        }
+        // }
+        // else
+        // {
+        //     _logger.LogInformation("Model is invalid");
+        // }
         return RedirectToAction("Index");
     }
 
@@ -115,5 +126,16 @@ public class HomeController : Controller
     public IActionResult Error()
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+    }
+    
+    /*
+     * Hàm xử lý hình ảnh
+     * 
+     */
+    private void ProcessImage(IFormFile image, ref string fileName)
+    {
+        string path = _webHost.WebRootPath + "\\images\\";
+        fileName = image.FileName;
+        image.CopyTo(new FileStream(path + fileName, FileMode.Create));
     }
 }
