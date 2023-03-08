@@ -15,8 +15,8 @@
             <div class="card-body">
                 <h5 class="card-title">@product.Name</h5>
                 <p class="card-text">@product.LongDescription</p>
-                <a asp-action="Update" asp-route-product="@product" class="btn btn-primary">Update</a>
-                <a asp-action="Delete" asp-route-ID="@product.Id" class="btn btn-primary">Delete</a>
+                <a asp-action="OpenUpdate" asp-route-id="@product.Id" class="btn btn-primary">Update</a>
+                <a asp-action="Delete" asp-route-id="@product.Id" class="btn btn-primary">Delete</a>
             </div>
         </div>
     }

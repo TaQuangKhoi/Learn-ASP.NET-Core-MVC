@@ -34,7 +34,7 @@ public class HomeController : Controller
     }
     
     [HttpPost]
-    public IActionResult Create(CreateViewModel model)
+    public IActionResult Create(CreateViewModel? model)
     {
         if (ModelState.IsValid)
         {
@@ -59,25 +59,55 @@ public class HomeController : Controller
 
     public IActionResult Delete(int id)
     {
+        _logger.LogInformation("Delete Employee");
+        _logger.LogInformation("Id: " + id);
         _productInterface.DeleteProduct(id);
         return RedirectToAction("Index");
     }
     
     [HttpGet]
-    public IActionResult Update(Product product)
+    public IActionResult OpenUpdate(int id)
     {
-        _logger.LogInformation("Update Employee HttpGet");
-        // _logger.LogInformation("ID: " + ID);
-        UpdateViewModel vm = new UpdateViewModel();
-        vm.Product = product;
+        _logger.LogInformation("Open Update Employee");
+        _logger.LogInformation("Id: " + id);
+        Product product = _productInterface.GetProduct(id);
+        UpdateViewModel vm = new UpdateViewModel()
+        {
+            Id = product.Id,
+            Name = product.Name,
+            ShortDescription = product.ShortDescription,
+            LongDescription = product.LongDescription,
+            Category = product.Category,
+            Price = product.Price,
+            Stock = product.Stock,
+            // ImageUrl = product.ImageUrl
+        };
         return View("Update", vm);
     }
         
     [HttpPost]
-    public IActionResult Update(UpdateViewModel vm)
+    public IActionResult SaveUpdate(UpdateViewModel vm)
     {
         _logger.LogInformation("Update Employee");
-        _productInterface.UpdateProduct(vm.Product);
+        if (ModelState.IsValid)
+        {
+            string path = _webHost.WebRootPath + "\\images\\";
+            var fileName = vm.Image.FileName;
+            vm.Image.CopyTo(new FileStream(path + fileName, FileMode.Create));
+            Product product = new Product()
+            {
+                Id = vm.Id,
+                Name = vm.Name,
+                ShortDescription = vm.ShortDescription,
+                LongDescription = vm.LongDescription,
+                Category = vm.Category,
+                Price = vm.Price,
+                Stock = vm.Stock,
+                ImageUrl = fileName
+            };
+            _productInterface.UpdateProduct(product);
+            return RedirectToAction("Index");
+        }
         return RedirectToAction("Index");
     }
 
