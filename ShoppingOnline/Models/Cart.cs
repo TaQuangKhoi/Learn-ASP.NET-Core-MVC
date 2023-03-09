@@ -7,7 +7,7 @@ public class Cart
 
     public virtual void AddItem(Product product, int quanity)
     {
-        CartItem Item = ItemCollection.Where(p => p.Product.Id == product.Id).FirstOrDefault();
+        CartItem Item = ItemCollection.FirstOrDefault(p => p.Product.Id == product.Id)!;
         if (Item == null)
         {
             ItemCollection.Add(new CartItem
@@ -25,7 +25,9 @@ public class Cart
     public virtual void RemoveItem(Product product) =>
         ItemCollection.RemoveAll(l => l.Product.Id == product.Id);
 
-    public virtual decimal ComputeTotalValue() => ItemCollection.Sum(l => l.Product.Price * l.Quantity);
+    public virtual double ComputeTotalValue() => ItemCollection.Sum(l => l.Product.Price * l.Quantity);
+
+    // write ComputeTotalValue function return decimal and using TryParse() to convert string to decimal
 
     public virtual void Clear() => ItemCollection.Clear();
 }
@@ -34,7 +36,7 @@ public class CartItem
 {
     public int CartItemId { get; set; }
 
-    public Product Product { get; set; }
+    public Product? Product { get; set; }
 
-    public int? Quantity { get; set; }
+    public int Quantity { get; set; }
 }

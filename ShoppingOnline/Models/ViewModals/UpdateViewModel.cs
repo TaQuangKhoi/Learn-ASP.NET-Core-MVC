@@ -19,7 +19,7 @@ public class UpdateViewModel
     public string? Category { get; set; }
     
     [Required(ErrorMessage = "Please enter a price")]
-    public decimal? Price { get; set; }
+    public float Price { get; set; }
     
     [Required(ErrorMessage = "Please enter a stock")]
     public string? Stock { get; set; }
