@@ -10,6 +10,10 @@ builder.Services.AddDbContext<AppDbContext>(optionsAction =>
 
 builder.Services.AddScoped<IProductInterface, ProductRepository>();
 
+// Sử dụng với phần Cart
+builder.Services.AddMemoryCache();
+builder.Services.AddSession();
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
@@ -27,11 +31,12 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseSession();
 
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=ProductManagement}/{action=Index}/{id?}");
 
 app.Run();
