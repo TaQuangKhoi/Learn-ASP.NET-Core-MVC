@@ -7,7 +7,7 @@ namespace ShoppingOnline.Controllers;
 
 public class CartController : Controller
 {
-    private IProductInterface _productRepository;
+    private readonly  IProductInterface _productRepository;
     private ILogger<CartController> _logger;
 
     public CartController(IProductInterface productRepository, ILogger<CartController> logger)
@@ -59,7 +59,6 @@ public class CartController : Controller
         SaveCart(cart);
         return RedirectToAction("Index", new { returnUrl });
     }
-
 
     private Cart GetCart()
     {
