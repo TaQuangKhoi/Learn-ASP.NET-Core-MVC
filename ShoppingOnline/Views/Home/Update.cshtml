@@ -7,7 +7,7 @@
 
 <h2>@ViewBag.Title</h2>
 
-<form asp-action="SaveUpdate" enctype="multipart/form-data" method="post">
+<form asp-action="Update" enctype="multipart/form-data" method="post">
     <div asp-validation-summary="All" class="text-danger"></div>
     <div class="form-group">
         <label asp-for="Id">ID:</label>
@@ -42,6 +42,6 @@
         <input asp-for="Image" type="file" class="form-control" placeholder="PhotoPath">
     </div>
     <div class="form-group p-5">
-        <button type="submit" class="btn btn-primary">Cập Nhật</button>
+        <button type="submit" asp-action="Update" class="btn btn-primary">Cập Nhật</button>
     </div>
 </form>

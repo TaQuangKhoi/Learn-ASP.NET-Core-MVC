@@ -69,7 +69,7 @@ public class HomeController : Controller
     }
     
     [HttpGet]
-    public IActionResult OpenUpdate(int id)
+    public IActionResult Update(int id)
     {
         _logger.LogInformation("Open Update Employee");
         _logger.LogInformation("Id: " + id);
@@ -90,7 +90,7 @@ public class HomeController : Controller
     }
         
     [HttpPost]
-    public IActionResult SaveUpdate(UpdateViewModel vm)
+    public IActionResult Update(UpdateViewModel vm)
     {
         ModelState.Remove("Id");
         _logger.LogInformation("Save Update Employee");
