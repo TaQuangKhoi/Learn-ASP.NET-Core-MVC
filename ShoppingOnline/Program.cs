@@ -3,7 +3,8 @@ using ShoppingOnline.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var connectionString = builder.Configuration.GetConnectionString("Sqlite");
+var connectionString = "Data Source=" +
+                       Path.Combine(Directory.GetCurrentDirectory(), "Data\\mydb.db");
 builder.Services.AddDbContext<AppDbContext>(optionsAction =>
     optionsAction.UseSqlite(connectionString)
 );
