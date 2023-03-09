@@ -99,6 +99,7 @@ namespace CompanyManagement.Controllers
         public IActionResult UpdateEmployee(Employee employee)
         {
             _logger.LogInformation("Update Employee");
+            _logger.LogInformation("ID: " + employee.ID);
             _employeeRepository.Update(employee);
             return View("List", _employeeRepository.GetAllEmployees());
         }

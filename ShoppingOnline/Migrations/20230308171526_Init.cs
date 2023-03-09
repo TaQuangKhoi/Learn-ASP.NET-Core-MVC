@@ -21,7 +21,8 @@ namespace ShoppingOnline.Migrations
                     LongDescription = table.Column<string>(type: "TEXT", nullable: false),
                     Category = table.Column<string>(type: "TEXT", nullable: false),
                     Price = table.Column<decimal>(type: "TEXT", nullable: false),
-                    Stock = table.Column<string>(type: "TEXT", nullable: false)
+                    Stock = table.Column<string>(type: "TEXT", nullable: false),
+                    ImageUrl = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {

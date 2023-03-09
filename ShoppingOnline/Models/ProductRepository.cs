@@ -3,10 +3,12 @@
 public class ProductRepository : IProductInterface
 {
     private readonly AppDbContext _appDbContext;
+    private readonly ILogger<ProductRepository> _logger;
     
-    public ProductRepository(AppDbContext appDbContext)
+    public ProductRepository(AppDbContext appDbContext, ILogger<ProductRepository> logger)
     {
         _appDbContext = appDbContext;
+        _logger = logger;
     }
     
     public Product GetProduct(int id)
@@ -33,6 +35,8 @@ public class ProductRepository : IProductInterface
 
     public Product UpdateProduct(Product product)
     {
+        _logger.LogInformation("Update Product");
+        _logger.LogInformation("Product: " + product.toString());
         _appDbContext.Products.Update(product);
         _appDbContext.SaveChanges();
         return product;

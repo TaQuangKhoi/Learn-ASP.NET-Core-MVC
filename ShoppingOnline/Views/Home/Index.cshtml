@@ -8,15 +8,16 @@
     <a asp-action="Create" class="text-decoration-none text-white">Create</a>
 </button>
 
-    @foreach (var product in @Model)
-    {
-        <div class="card m-3" style="width: 18rem;">
-            <img class="card-img-top" src="~/images/@product.ImageUrl" alt="@product.Name">
-            <div class="card-body">
-                <h5 class="card-title">@product.Name</h5>
-                <p class="card-text">@product.LongDescription</p>
-                <a asp-action="Update" asp-route-product="@product" class="btn btn-primary">Update</a>
-                <a asp-action="Delete" asp-route-ID="@product.Id" class="btn btn-primary">Delete</a>
-            </div>
+@foreach (var product in @Model)
+{
+    <div class="card m-3" style="width: 18rem;">
+        <img class="card-img-top" src="~/images/@product.ImageUrl" alt="@product.Name">
+        <div class="card-body">
+            <h5 class="card-title">@product.Name</h5>
+            <p class="card-text">@product.LongDescription</p>
+            <a asp-action="Update" asp-route-id="@product.Id" class="btn btn-primary" id="tag-a-open-update"
+               >Update</a>
+            <a asp-action="Delete" asp-route-id="@product.Id" class="btn btn-primary" id="tag-a-delete">Delete</a>
         </div>
-    }
+    </div>
+}

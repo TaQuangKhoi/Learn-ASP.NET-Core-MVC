@@ -34,13 +34,16 @@ public class HomeController : Controller
     }
     
     [HttpPost]
-    public IActionResult Create(CreateViewModel model)
+    public IActionResult Create(CreateViewModel? model)
     {
         if (ModelState.IsValid)
         {
-            string path = _webHost.WebRootPath + "\\images\\";
-            var fileName = model.Image.FileName;
-            model.Image.CopyTo(new FileStream(path + fileName, FileMode.Create));
+            string fileName = "";
+            if (model.Image != null)
+            {
+                IFormFile image = model.Image;
+                ProcessImage(image, ref fileName);
+            }
             Product product = new Product()
             {
                 Name = model.Name,
@@ -59,25 +62,67 @@ public class HomeController : Controller
 
     public IActionResult Delete(int id)
     {
+        _logger.LogInformation("Delete Employee");
+        _logger.LogInformation("Id: " + id);
         _productInterface.DeleteProduct(id);
         return RedirectToAction("Index");
     }
     
     [HttpGet]
-    public IActionResult Update(Product product)
+    public IActionResult Update(int id)
     {
-        _logger.LogInformation("Update Employee HttpGet");
-        // _logger.LogInformation("ID: " + ID);
-        UpdateViewModel vm = new UpdateViewModel();
-        vm.Product = product;
+        _logger.LogInformation("Open Update Employee");
+        _logger.LogInformation("Id: " + id);
+        Product product = _productInterface.GetProduct(id);
+        _logger.LogInformation("Product Id: " + product.Id);
+        UpdateViewModel vm = new UpdateViewModel()
+        {
+            Id = id,
+            Name = product.Name,
+            ShortDescription = product.ShortDescription,
+            LongDescription = product.LongDescription,
+            Category = product.Category,
+            Price = product.Price,
+            Stock = product.Stock,
+            // ImageUrl = product.ImageUrl
+        };
         return View("Update", vm);
     }
         
     [HttpPost]
     public IActionResult Update(UpdateViewModel vm)
     {
-        _logger.LogInformation("Update Employee");
-        _productInterface.UpdateProduct(vm.Product);
+        ModelState.Remove("Id");
+        _logger.LogInformation("Save Update Employee");
+        _logger.LogInformation("Save Update Id: " + vm.Id);
+        _logger.LogInformation("Save Update vm: " + vm.toStr());
+        // if (ModelState.IsValid) {
+            _logger.LogInformation("Model is valid");
+            string fileName = "";
+            if (vm.Image != null)
+            {
+                IFormFile image = vm.Image;
+                ProcessImage(image, ref fileName);
+            }
+            
+            Product product = new Product()
+            {
+                Id = vm.Id,
+                Name = vm.Name,
+                ShortDescription = vm.ShortDescription,
+                LongDescription = vm.LongDescription,
+                Category = vm.Category,
+                Price = vm.Price,
+                Stock = vm.Stock,
+                ImageUrl = fileName
+            };
+            _productInterface.UpdateProduct(product);
+            return RedirectToAction("Index");
+        // }
+        // else
+        // {
+        //     _logger.LogInformation("Model is invalid");
+        // }
         return RedirectToAction("Index");
     }
 
@@ -85,5 +130,16 @@ public class HomeController : Controller
     public IActionResult Error()
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+    }
+    
+    /*
+     * Hàm xử lý hình ảnh
+     * 
+     */
+    private void ProcessImage(IFormFile image, ref string fileName)
+    {
+        string path = _webHost.WebRootPath + "\\images\\";
+        fileName = image.FileName;
+        image.CopyTo(new FileStream(path + fileName, FileMode.Create));
     }
 }
