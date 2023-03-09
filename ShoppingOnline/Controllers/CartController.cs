@@ -8,12 +8,14 @@ namespace ShoppingOnline.Controllers;
 public class CartController : Controller
 {
     private IProductInterface _productRepository;
+    private ILogger<CartController> _logger;
 
-    public CartController(IProductInterface productRepository)
+    public CartController(IProductInterface productRepository, ILogger<CartController> logger)
     {
         _productRepository = productRepository;
+        _logger = logger;
     }
-    
+
     // GET
     public ViewResult Index(string returnUrl)
     {
@@ -61,7 +63,12 @@ public class CartController : Controller
 
     private Cart GetCart()
     {
-        Cart cart = HttpContext.Session.GetJson<Cart>("Cart") ?? new Cart();
+        Cart cart = HttpContext.Session.GetJson<Cart>("Cart");
+        if (cart == null)
+        {
+            cart = new Cart();
+            SaveCart(cart);
+        }
         return cart;
     }
 
