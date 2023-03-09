@@ -27,4 +27,8 @@ public class Product
     
     public string ImageUrl { get; set; }
     
+    public string toString()
+    {
+        return "Id: " + Id + ", Name: " + Name + ", ShortDescription: " + ShortDescription + ", LongDescription: " + LongDescription + ", Category: " + Category + ", Price: " + Price + ", Stock: " + Stock + ", ImageUrl: " + ImageUrl;
+    }
 }

@@ -36,6 +36,7 @@ public class ProductRepository : IProductInterface
     public Product UpdateProduct(Product product)
     {
         _logger.LogInformation("Update Product");
+        _logger.LogInformation("Product: " + product.toString());
         _appDbContext.Products.Update(product);
         _appDbContext.SaveChanges();
         return product;

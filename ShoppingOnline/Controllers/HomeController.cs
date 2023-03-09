@@ -74,9 +74,10 @@ public class HomeController : Controller
         _logger.LogInformation("Open Update Employee");
         _logger.LogInformation("Id: " + id);
         Product product = _productInterface.GetProduct(id);
+        _logger.LogInformation("Product Id: " + product.Id);
         UpdateViewModel vm = new UpdateViewModel()
         {
-            Id = product.Id,
+            Id = id,
             Name = product.Name,
             ShortDescription = product.ShortDescription,
             LongDescription = product.LongDescription,
@@ -91,7 +92,10 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult SaveUpdate(UpdateViewModel vm)
     {
+        ModelState.Remove("Id");
         _logger.LogInformation("Save Update Employee");
+        _logger.LogInformation("Save Update Id: " + vm.Id);
+        _logger.LogInformation("Save Update vm: " + vm.toStr());
         // if (ModelState.IsValid) {
             _logger.LogInformation("Model is valid");
             string fileName = "";

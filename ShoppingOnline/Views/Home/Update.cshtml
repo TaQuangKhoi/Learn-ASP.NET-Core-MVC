@@ -10,6 +10,10 @@
 <form asp-action="SaveUpdate" enctype="multipart/form-data" method="post">
     <div asp-validation-summary="All" class="text-danger"></div>
     <div class="form-group">
+        <label asp-for="Id">ID:</label>
+        <input asp-for="Id" type="text" class="form-control" id="input-id" aria-describedby="nameHelp" disabled="">
+    </div>
+    <div class="form-group">
         <label asp-for="Name">Name:</label>
         <input asp-for="Name" type="text" class="form-control" id="exampleInputName" aria-describedby="nameHelp">
     </div>

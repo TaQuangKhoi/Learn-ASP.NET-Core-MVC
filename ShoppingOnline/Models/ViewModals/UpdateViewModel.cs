@@ -25,4 +25,9 @@ public class UpdateViewModel
     public string? Stock { get; set; }
     
     public  IFormFile Image { get; set; }
+    
+    public string toStr()
+    {
+        return $"Id: {Id}, Name: {Name}, ShortDescription: {ShortDescription}, LongDescription: {LongDescription}, Category: {Category}, Price: {Price}, Stock: {Stock}, Image: {Image}";
+    }
 }
