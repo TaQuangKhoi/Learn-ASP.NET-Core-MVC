@@ -7,14 +7,14 @@ using ShoppingOnline.Models.Carts;
 var builder = WebApplication.CreateBuilder(args);
 
 var connectionString = "Data Source=" +
-                       Path.Combine(Directory.GetCurrentDirectory(), "Data\\mydb.db");
+                       Path.Combine(Directory.GetCurrentDirectory(), "mydb.db");
 builder.Services.AddDbContext<AppDbContext>(optionsAction =>
     optionsAction.UseSqlite(connectionString)
 );
 
 builder.Services.AddScoped<IProductInterface, ProductRepository>();
 builder.Services.AddTransient<IOrderRepository, OrderRepository>();
-builder.Services.AddScoped<Cart>();
+builder.Services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
 
 // Sử dụng với phần Cart
 builder.Services.AddMemoryCache();

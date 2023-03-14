@@ -34,7 +34,7 @@ public class AppDbContext : DbContext
             
             optionsBuilder.UseSqlite(
                 "Data Source=" +
-                       Path.Combine(Directory.GetCurrentDirectory(), "Data\\mydb.db")
+                       Path.Combine(Directory.GetCurrentDirectory(), "mydb.db")
             );
             
             return new AppDbContext(optionsBuilder.Options);
