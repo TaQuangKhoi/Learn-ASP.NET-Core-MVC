@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using ShoppingOnline.Infrastructure;
 using ShoppingOnline.Models;
+using ShoppingOnline.Models.Orders;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +12,8 @@ builder.Services.AddDbContext<AppDbContext>(optionsAction =>
 );
 
 builder.Services.AddScoped<IProductInterface, ProductRepository>();
+builder.Services.AddTransient<IOrderRepository, OrderRepository>();
+// builder.Services.AddScoped<Cart>(sp => SessionCart.GetJson<Cart>(sp, "Cart") ?? new());
 
 // Sử dụng với phần Cart
 builder.Services.AddMemoryCache();

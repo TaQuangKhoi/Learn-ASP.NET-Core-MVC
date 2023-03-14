@@ -2,7 +2,7 @@
 
 namespace ShoppingOnline.Infrastructure;
 
-public static class SessionExtension
+public static class SessionCart
 {
     public static void SetJson(this ISession session, string key, object value)
     {

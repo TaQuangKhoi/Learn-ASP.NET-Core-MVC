@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
+using ShoppingOnline.Models.Orders;
 
 namespace ShoppingOnline.Models;
 
@@ -9,6 +10,20 @@ public class AppDbContext : DbContext
     
     // Thiết lập model dùng để tạo DB
     public DbSet<Product> Products { get; set; }
+    
+    public DbSet<Order> Orders { get; set; }
+    
+    public DbSet<OrderDetail> OrderDetails { get; set; }
+    
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+        
+        // modelBuilder.Entity<OrderDetail>().HasKey(od => new {od.OrderId, od.ProductId});
+        
+        modelBuilder.Ignore<CartItem>();
+        
+    }
     
     public class AppDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>
     {
