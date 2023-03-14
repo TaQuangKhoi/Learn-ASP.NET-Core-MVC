@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using ShoppingOnline.Models.Orders;
+using ShoppingOnline.Models.Carts;
 
 namespace ShoppingOnline.Models;
 

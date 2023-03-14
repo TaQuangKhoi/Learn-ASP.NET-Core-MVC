@@ -1,4 +1,6 @@
-﻿namespace ShoppingOnline.Models.Orders;
+﻿using ShoppingOnline.Models.Carts;
+
+namespace ShoppingOnline.Models.Orders;
 
 public class OrderRepository : IOrderRepository
 {

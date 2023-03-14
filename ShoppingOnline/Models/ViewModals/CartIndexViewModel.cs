@@ -1,4 +1,6 @@
-﻿namespace ShoppingOnline.Models.ViewModals;
+﻿using ShoppingOnline.Models.Carts;
+
+namespace ShoppingOnline.Models.ViewModals;
 
 public class CartIndexViewModel
 {

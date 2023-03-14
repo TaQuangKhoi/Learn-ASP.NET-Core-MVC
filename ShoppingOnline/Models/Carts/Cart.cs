@@ -1,4 +1,4 @@
-﻿namespace ShoppingOnline.Models;
+﻿namespace ShoppingOnline.Models.Carts;
 
 public class Cart
 {

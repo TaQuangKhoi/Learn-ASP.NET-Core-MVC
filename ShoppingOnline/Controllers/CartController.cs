@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ShoppingOnline.Infrastructure;
 using ShoppingOnline.Models;
+using ShoppingOnline.Models.Carts;
 using ShoppingOnline.Models.ViewModals;
 
 namespace ShoppingOnline.Controllers;

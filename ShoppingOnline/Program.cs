@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using ShoppingOnline.Infrastructure;
 using ShoppingOnline.Models;
 using ShoppingOnline.Models.Orders;
+using ShoppingOnline.Models.Carts;
 
 var builder = WebApplication.CreateBuilder(args);
 
