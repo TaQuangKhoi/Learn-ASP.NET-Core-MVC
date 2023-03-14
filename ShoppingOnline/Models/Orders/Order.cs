@@ -6,10 +6,10 @@ namespace ShoppingOnline.Models.Orders;
 public class Order
 {
     [BindNever]
-    public int OrderId { get; set; }
-    
-    [BindNever]
-    public IQueryable<OrderDetail> DetailItems { get; set; }
+    [Key]
+    public int Id { get; set; }
+
+    public List<OrderDetail> DetailItems = new List<OrderDetail>();
     
     public bool Shipped { get; set; }
 

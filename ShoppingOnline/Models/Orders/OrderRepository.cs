@@ -22,6 +22,7 @@ public class OrderRepository : IOrderRepository
         order.OrderPlaced = DateTime.Now;
         
         _context.Orders.Add(order);
+        _context.SaveChanges();
         
         var cartItems = _cart.Items;
 
@@ -32,7 +33,7 @@ public class OrderRepository : IOrderRepository
                 Quantity = item.Quantity,
                 Price = item.Product.Price,
                 ProductId = item.Product.Id,
-                OrderId = order.OrderId
+                OrderId = order.Id
             };
             
             _context.OrderDetails.Add(orderDetail);
