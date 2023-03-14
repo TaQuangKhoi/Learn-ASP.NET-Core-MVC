@@ -13,7 +13,7 @@ builder.Services.AddDbContext<AppDbContext>(optionsAction =>
 
 builder.Services.AddScoped<IProductInterface, ProductRepository>();
 builder.Services.AddTransient<IOrderRepository, OrderRepository>();
-// builder.Services.AddScoped<Cart>(sp => SessionCart.GetJson<Cart>(sp, "Cart") ?? new());
+builder.Services.AddScoped<Cart>();
 
 // Sử dụng với phần Cart
 builder.Services.AddMemoryCache();
