@@ -5,8 +5,12 @@ namespace ShoppingOnline.Models.Orders;
 
 public class Order
 {
-    [BindNever] public int OrderId { get; set; }
-    [BindNever] public IQueryable<OrderDetail> DetailItems { get; set; }
+    [BindNever]
+    public int OrderId { get; set; }
+    
+    [BindNever]
+    public IQueryable<OrderDetail> DetailItems { get; set; }
+    
     public bool Shipped { get; set; }
 
     [Required(ErrorMessage = "Please enter a name")]
@@ -21,5 +25,6 @@ public class Order
     public string City { get; set; }
 
     public string Zip { get; set; }
+    
     public DateTime OrderPlaced { get; set; }
 }

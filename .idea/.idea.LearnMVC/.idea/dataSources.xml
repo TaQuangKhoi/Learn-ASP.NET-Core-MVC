@@ -11,11 +11,11 @@
       </jdbc-additional-properties>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="mydb.db" uuid="2440e276-2fba-4548-8027-1331dee6ff68">
+    <data-source source="LOCAL" name="mydb.db" uuid="edf61a2a-0d00-4674-ba3f-df2a589ef741">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/../../../../../foo_db/mydb.db</jdbc-url>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/ShoppingOnline/mydb.db</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

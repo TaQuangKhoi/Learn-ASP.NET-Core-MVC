@@ -6,14 +6,17 @@ namespace ShoppingOnline.Controllers;
 
 public class OrderController : Controller
 {
+    private ILogger<OrderController> _logger;
+    
     private readonly IOrderRepository _orderRepository;
 
     private Cart _cart;
     
-    public OrderController(IOrderRepository orderRepository, Cart cartService)
+    public OrderController(IOrderRepository orderRepository, Cart cartService, ILogger<OrderController> logger)
     {
         _orderRepository = orderRepository;
         _cart = cartService;
+        _logger = logger;
     }
     
     // GET
@@ -29,9 +32,10 @@ public class OrderController : Controller
         if ( _cart.Items.Count() == 0 )
         {
             ModelState.AddModelError("", "Sorry, your cart is empty!");
+            _logger.LogWarning("Checkout failed: cart is empty");
         }
 
-        if (ModelState.IsValid)
+        if ( ModelState.IsValid )
         {
             _orderRepository.SaveOrder(order);
             return RedirectToAction("Completed");

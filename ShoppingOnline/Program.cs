@@ -15,6 +15,14 @@ builder.Services.AddDbContext<AppDbContext>(optionsAction =>
 builder.Services.AddScoped<IProductInterface, ProductRepository>();
 builder.Services.AddTransient<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+/**
+ * Removes the required attribute for non-nullable reference types.
+ */
+builder.Services.AddControllers(
+    options => options.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes = true);
+
 
 // Sử dụng với phần Cart
 builder.Services.AddMemoryCache();
