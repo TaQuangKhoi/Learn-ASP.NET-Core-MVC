@@ -33,7 +33,8 @@ public class AppDbContext : DbContext
             var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
             
             optionsBuilder.UseSqlite(
-                "Data Source=c:\\foo_db\\mydb.db;"
+                "Data Source=" +
+                       Path.Combine(Directory.GetCurrentDirectory(), "Data\\mydb.db")
             );
             
             return new AppDbContext(optionsBuilder.Options);
