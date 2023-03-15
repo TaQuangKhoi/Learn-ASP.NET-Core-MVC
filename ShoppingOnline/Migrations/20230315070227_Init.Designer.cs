@@ -11,8 +11,8 @@ using ShoppingOnline.Models;
 namespace ShoppingOnline.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230315065016_AddIdentity")]
-    partial class AddIdentity
+    [Migration("20230315070227_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -158,37 +158,35 @@ namespace ShoppingOnline.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.Property<string>("LoginProvider")
+                    b.Property<string>("UserId")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("ProviderKey")
+                    b.Property<string>("LoginProvider")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
+                    b.Property<string>("ProviderKey")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("LoginProvider", "ProviderKey");
-
-                    b.HasIndex("UserId");
+                    b.HasKey("UserId");
 
                     b.ToTable("AspNetUserLogins", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
                 {
-                    b.Property<string>("UserId")
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("RoleId")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("UserId", "RoleId");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
-                    b.HasIndex("RoleId");
+                    b.HasKey("RoleId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
                 });
@@ -198,16 +196,16 @@ namespace ShoppingOnline.Migrations
                     b.Property<string>("UserId")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Value")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("LoginProvider")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Value")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("UserId", "LoginProvider", "Name");
+                    b.HasKey("UserId", "Value");
 
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
