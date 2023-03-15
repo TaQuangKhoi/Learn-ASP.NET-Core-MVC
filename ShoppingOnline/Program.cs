@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
-using ShoppingOnline.Infrastructure;
 using ShoppingOnline.Models;
 using ShoppingOnline.Models.Orders;
 using ShoppingOnline.Models.Carts;
+using ShoppingOnline.Models.Users;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +16,10 @@ builder.Services.AddScoped<IProductInterface, ProductRepository>();
 builder.Services.AddTransient<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+// Using Identity
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+    .AddEntityFrameworkStores<AppDbContext>();
 
 /**
  * Removes the required attribute for non-nullable reference types.
@@ -48,6 +52,7 @@ app.UseRouting();
 app.UseSession();
 
 app.UseAuthorization();
+app.UseAuthentication(); // Using with Identity
 
 app.MapControllerRoute(
     name: "default",
