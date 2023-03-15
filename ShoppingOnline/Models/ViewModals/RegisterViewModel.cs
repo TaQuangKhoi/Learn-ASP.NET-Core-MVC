@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ShoppingOnline.Models;
+namespace ShoppingOnline.Models.ViewModals;
 
-public class RegisterViewModal
+public class RegisterViewModel
 {
     [Required]
     [EmailAddress]
