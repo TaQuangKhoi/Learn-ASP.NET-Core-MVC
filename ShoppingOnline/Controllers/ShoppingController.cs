@@ -19,7 +19,8 @@ public class ShoppingController : Controller
         return View("ProductList");
     }
     
-    public IActionResult List(string category)
+    // TODO : Add a new action method to handle the search
+    public IActionResult List(string category, string searchString)
     {
         ProductListViewModel productListViewModel = new ProductListViewModel()
         {
