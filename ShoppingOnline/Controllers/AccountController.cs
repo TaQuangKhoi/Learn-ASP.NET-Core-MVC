@@ -79,7 +79,7 @@ public class AccountController : Controller
                 var result = await _signInManager.PasswordSignInAsync(user, model.Password, false, false);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Lis", "Shopping");
+                    return RedirectToAction("List", "Shopping");
                 }
             }
             TempData["Error"] = "Wrong credentials. Please, try again!";
@@ -88,5 +88,11 @@ public class AccountController : Controller
 
         TempData["Error"] = "Wrong credentials. Please, try again!";
         return View(model);
+    }
+
+    public async Task<IActionResult> SignOut()
+    {
+        await _signInManager.SignOutAsync();
+        return RedirectToAction("List", "Shopping");
     }
 }

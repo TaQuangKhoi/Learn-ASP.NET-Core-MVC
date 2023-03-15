@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+
+@inject SignInManager<IdentityUser> SignInManager
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
@@ -25,15 +30,27 @@
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Shopping" asp-action="List">Mua Hàng</a>
                     </li>
+
+                </ul>
+                <ul class="navbar-nav flex-grow-0">
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Cart" asp-action="Index">Giỏ Hàng</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">Đăng Ký</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Đăng Nhập</a>
-                    </li>
+                    @if (!SignInManager.IsSignedIn(User))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">Đăng Ký</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Đăng Nhập</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="SignOut">Đăng Xuất</a>
+                        </li>
+                    }
                 </ul>
             </div>
         </div>
