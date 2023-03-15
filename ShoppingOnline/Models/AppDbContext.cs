@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using ShoppingOnline.Models.Orders;
@@ -16,6 +17,7 @@ public class AppDbContext : IdentityDbContext
     public DbSet<Order> Orders { get; set; }
     
     public DbSet<OrderDetail> OrderDetails { get; set; }
+    // Thiết lập model dùng để tạo DB
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -24,6 +26,12 @@ public class AppDbContext : IdentityDbContext
         // modelBuilder.Entity<OrderDetail>().HasKey(od => new {od.OrderId, od.ProductId});
         
         modelBuilder.Ignore<CartItem>();
+        
+        // Make add Migration work
+        modelBuilder.Entity<IdentityUserLogin<string>>().HasKey(x => new { x.UserId });
+        modelBuilder.Entity<IdentityUserRole<string>>().HasKey(x => new { x.RoleId });
+        modelBuilder.Entity<IdentityUserToken<string>>().HasKey(x => new { x.UserId, x.Value });
+        // Make add Migration work
         
     }
     

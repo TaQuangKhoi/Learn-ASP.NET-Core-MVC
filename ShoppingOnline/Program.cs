@@ -1,8 +1,9 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using ShoppingOnline.Models;
 using ShoppingOnline.Models.Orders;
 using ShoppingOnline.Models.Carts;
-using ShoppingOnline.Models.Users;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
