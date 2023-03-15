@@ -1,11 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using ShoppingOnline.Models.Orders;
 using ShoppingOnline.Models.Carts;
 
 namespace ShoppingOnline.Models;
 
-public class AppDbContext : DbContext
+public class AppDbContext : IdentityDbContext
 {
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) {}
     
