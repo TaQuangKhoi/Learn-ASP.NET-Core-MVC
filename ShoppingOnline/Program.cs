@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using ShoppingOnline.Controllers;
 using ShoppingOnline.Models;
 using ShoppingOnline.Models.Orders;
 using ShoppingOnline.Models.Carts;
@@ -17,6 +18,7 @@ builder.Services.AddScoped<IProductInterface, ProductRepository>();
 builder.Services.AddTransient<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddScoped<Utils>();
 
 // Using Identity
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()

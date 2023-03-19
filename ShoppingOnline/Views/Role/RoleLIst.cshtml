@@ -1,0 +1,29 @@
+﻿@model List<Microsoft.AspNetCore.Identity.IdentityRole>
+
+@{
+    ViewData["Title"] = "Role List";
+}
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Normalized Name</th>
+        <th scope="col">Concurrency Stamp</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+    @foreach (var role in Model)
+    {
+        <tr>
+            <th scope="row">@role.Id</th>
+            <td>@role.Name</td>
+            <td>@role.NormalizedName</td>
+            <td>@role.ConcurrencyStamp</td>
+        </tr>
+    }
+
+    </tbody>
+</table>
