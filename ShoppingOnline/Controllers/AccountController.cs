@@ -14,16 +14,19 @@ public class AccountController : Controller
     
     private readonly RoleManager<IdentityRole> _roleManager;
 
-
+    private Utils _utils = null;
+    
     public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager,
         ILogger<AccountController> logger,
-        RoleManager<IdentityRole> roleManager
+        RoleManager<IdentityRole> roleManager,
+        Utils utils
             )
     {
         _userManager = userManager;
         _signInManager = signInManager;
         _logger = logger;
         _roleManager = roleManager;
+        _utils = utils;
         
         // Create User Role
         string roleName = "Users";
@@ -50,6 +53,10 @@ public class AccountController : Controller
     [HttpGet]
     public IActionResult Register()
     {
+        if (_utils.IsSignedIn(User))
+        {
+            return RedirectToAction("List", "Shopping");
+        }
         return View();
     }
 
@@ -103,6 +110,10 @@ public class AccountController : Controller
     [HttpGet]
     public IActionResult Login()
     {
+        if (_utils.IsSignedIn(User))
+        {
+            return RedirectToAction("List", "Shopping");
+        }
         return View();
     }
 
