@@ -29,7 +29,10 @@ public class AppDbContext : IdentityDbContext
         
         // Make add Migration work
         modelBuilder.Entity<IdentityUserLogin<string>>().HasKey(x => new { x.UserId });
-        modelBuilder.Entity<IdentityUserRole<string>>().HasKey(x => new { x.RoleId });
+        
+        // Lúc đầu Sơn chỉ set key là Role.Id nên không dùng chức năng thêm Role được
+        modelBuilder.Entity<IdentityUserRole<string>>().HasKey(x => new { x.RoleId, x.UserId });
+        
         modelBuilder.Entity<IdentityUserToken<string>>().HasKey(x => new { x.UserId, x.Value });
         // Make add Migration work
         

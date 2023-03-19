@@ -11,14 +11,36 @@ public class AccountController : Controller
     private readonly SignInManager<IdentityUser> _signInManager;
     
     private readonly ILogger<AccountController> _logger;
+    
+    private readonly RoleManager<IdentityRole> _roleManager;
+
 
     public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager,
-        ILogger<AccountController> logger
-    )
+        ILogger<AccountController> logger,
+        RoleManager<IdentityRole> roleManager
+            )
     {
         _userManager = userManager;
         _signInManager = signInManager;
         _logger = logger;
+        _roleManager = roleManager;
+        
+        // Create User Role
+        string roleName = "Users";
+        IdentityResult roleResult = null;
+
+        // Check to see if Role Exists, if not create it
+        var roleExist = _roleManager.RoleExistsAsync(roleName).Result;
+        if (!roleExist)
+        {
+            // Create the roles and seed them to the database
+            roleResult = _roleManager.CreateAsync(new IdentityRole(roleName)).Result;
+            // Check result
+            if (!roleResult.Succeeded)
+            {
+                _logger.LogError("Error while creating role");
+            }
+        }
     }
 
     /// <summary>
@@ -46,8 +68,27 @@ public class AccountController : Controller
             var result = await _userManager.CreateAsync(user, model.Password);
             if (result.Succeeded) //nếu đăng ký thành công, chuyển đến trang chủ
             {
-                await _signInManager.SignInAsync(user, isPersistent: false);
-                return RedirectToAction("Index", "Shopping");
+                _logger.LogInformation("User created a new account with password.");
+                // add user to Role User
+                try
+                {
+                    await _userManager.AddToRoleAsync(user, "Users");
+                    
+                    _logger.LogInformation("User added to role Users");
+
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    // after successfully register, sign in user
+                    return RedirectToAction("List", "Shopping");
+                }
+                catch (Exception e)
+                {
+                    _logger.LogError(e.Message);
+                    await _userManager.DeleteAsync(user);
+                }
+                finally
+                {
+                    _logger.LogInformation("Have try to add user to role Users");
+                }
             }
 
             foreach (var error in result.Errors)

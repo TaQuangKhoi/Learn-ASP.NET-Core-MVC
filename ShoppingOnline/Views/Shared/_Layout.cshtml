@@ -1,7 +1,9 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @using Microsoft.AspNetCore.Mvc.TagHelpers
+@using ShoppingOnline.Controllers
 
 @inject SignInManager<IdentityUser> SignInManager
+@inject Utils Utils
 
 <!DOCTYPE html>
 <html lang="en">
@@ -24,9 +26,13 @@
             </button>
             <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="ProductManagement" asp-action="Index">Quản Lý Sản Phẩm</a>
-                    </li>
+                    @if (Utils.IsAdmin(User))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="ProductManagement" asp-action="Index">Quản Lý Sản Phẩm</a>
+                        </li>
+                    }
+
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Shopping" asp-action="List">Mua Hàng</a>
                     </li>

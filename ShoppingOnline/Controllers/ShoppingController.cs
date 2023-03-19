@@ -13,11 +13,6 @@ public class ShoppingController : Controller
         productRepository = _productRepository;
     }
     
-    // GET
-    public IActionResult Index()
-    {
-        return View("ProductList");
-    }
     
     // TODO : Add a new action method to handle the search
     public IActionResult List(string category, string searchString)
