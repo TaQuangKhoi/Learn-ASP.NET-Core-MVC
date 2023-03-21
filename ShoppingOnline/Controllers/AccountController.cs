@@ -118,7 +118,7 @@ public class AccountController : Controller
         return View();
     }
 
-    [HttpPost]
+    [HttpPost("api/login")]
     public async Task<IActionResult> Login(LoginViewModel model)
     {
         if (!ModelState.IsValid) return View(model);
