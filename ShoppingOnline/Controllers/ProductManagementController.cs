@@ -6,7 +6,6 @@ using ShoppingOnline.Models.ViewModals;
 
 namespace ShoppingOnline.Controllers;
 
-[Authorize(Roles = "Admins")]
 public class ProductManagementController : Controller
 {
     private readonly ILogger<HomeController> _logger;

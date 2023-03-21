@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using ShoppingOnline.Models.ViewModals;
 
@@ -146,5 +147,11 @@ public class AccountController : Controller
     {
         await _signInManager.SignOutAsync();
         return RedirectToAction("List", "Shopping");
+    }
+    
+    [HttpPost]
+    public IActionResult AdminCreateUser()
+    {
+        return View();
     }
 }

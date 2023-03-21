@@ -3,6 +3,8 @@
 @using ShoppingOnline.Controllers
 
 @inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
 @inject Utils Utils
 
 <!DOCTYPE html>
@@ -53,6 +55,17 @@
                     }
                     else
                     {
+                        <li class="nav-item">
+                            <a href=""
+                               class="nav-link text-dark">
+                                @UserManager.GetUserName(User)
+                                @if (@Utils.IsAdmin(User))
+                                {
+                                    <span>(Admin)</span>
+                                }
+                            </a>
+                        </li>
+                        
                         <li class="nav-item">
                             <a href=""
                                 class="nav-link text-dark" data-bs-toggle="modal" data-bs-target="#exampleModal"
