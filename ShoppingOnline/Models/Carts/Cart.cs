@@ -30,6 +30,15 @@ public class Cart
     // write ComputeTotalValue function return decimal and using TryParse() to convert string to decimal
 
     public virtual void Clear() => ItemCollection.Clear();
+    
+    public virtual void SetQuantity(Product product, int quantity)
+    {
+        CartItem Item = ItemCollection.FirstOrDefault(p => p.Product.Id == product.Id)!;
+        if (Item != null)
+        {
+            Item.Quantity = quantity;
+        }
+    }
 }
 
 public class CartItem

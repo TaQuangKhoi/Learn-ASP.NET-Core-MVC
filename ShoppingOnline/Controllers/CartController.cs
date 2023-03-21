@@ -76,4 +76,22 @@ public class CartController : Controller
     {
         HttpContext.Session.SetJson("Cart", cart);
     }
+    
+    /// <summary>
+    /// Deletes a specific TodoItem.
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    private void UpdateQuantity(int id, int quantity = 1)
+    {
+        _logger.LogInformation("UpdateQuantity() called");
+        _logger.LogInformation($"id: {id}, quantity: {quantity}");
+        Product product = _productRepository.GetAllProducts().FirstOrDefault(p => p.Id == id);
+        if (product != null)
+        {
+            Cart cart = GetCart();
+            cart.SetQuantity(product, quantity);
+            SaveCart(cart);
+        }
+    }
 }

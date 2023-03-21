@@ -108,7 +108,7 @@ public class AccountController : Controller
         return View(model);
     }
 
-    [HttpGet]
+    [HttpGet("api/get-customer")]
     public IActionResult Login()
     {
         if (_utils.IsSignedIn(User))

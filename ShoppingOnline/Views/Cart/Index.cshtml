@@ -16,7 +16,12 @@
         {
             <tr>
                 <td class="text-left">@item.Product.Name</td>
-                <td class="text-left"><input type="number" value="@item.Quantity"/></td>
+                <td class="text-left">
+                    <input type="number" value="@item.Quantity" onchange="updateQuantity(@item.Quantity)"
+                           asp-action="UpdateQuantity" asp-controller="Cart" asp-route-id="@item.Product.Id"
+                           id="quantity-input"
+                    />
+                </td>
                 <td class="text-right">@item.Product.Price.ToString("#,# VND")</td>
                 <td class="text-right">@((item.Product.Price * item.Quantity).ToString("#,# VND") )</td>
                 <td class="text-center">
@@ -35,3 +40,49 @@
 <a asp-controller="Cart" asp-action="Clear" class="btn btn-outline-primary">Clear</a>
 <a style="margin-left: 1rem" asp-controller="Shopping" asp-action="List" class="btn btn-outline-primary">Back to shop</a>
 <a style="margin-left: 1rem" asp-controller="Order" asp-action="Checkout" class="btn btn-outline-primary">Checkout</a>
+
+@{
+    int OnChangeQuantity(int productId)
+    {
+        var quantity = 1;
+        if (quantity > 0)
+        {
+            // var cart = HttpContext.Session.GetJson<Cart>("cart") ?? new Cart();
+            // cart.SetQuantity(productId, quantity);
+            // HttpContext.Session.SetJson("cart", cart);
+        }
+        return 1;
+    }
+    void UpdateQuantity(int productId, int quantity)
+    {
+        if (quantity > 0)
+        {
+            // var cart = HttpContext.Session.GetJson<Cart>("cart") ?? new Cart();
+            // cart.SetQuantity(productId, quantity);
+            // HttpContext.Session.SetJson("cart", cart);
+        }
+    }
+    
+}
+
+@section Scripts
+{
+    <script type="text/javascript">
+         document.addEventListener("DOMContentLoaded", function () {
+            var button = document.getElementById('button');
+            button.addEventListener('click', function () {
+                var test = "@OnChangeQuantity(1)";
+                console.log(test);
+             });
+         });
+         
+         function updateQuantity(productId) {
+            let input = document.getElementById('quantity-input');
+            let quantity = input.value;
+            console.log(quantity);
+            console.log("productId: ", productId);
+            
+            @* @UpdateQuantity(productId, quantity); *@
+        }
+    </script>
+}
