@@ -52,7 +52,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-app.UseSession();
+app.UseSession(); // Sử dụng với phần Cart
 
 app.UseAuthorization();
 app.UseAuthentication(); // Using with Identity
