@@ -1,11 +1,13 @@
 ﻿using System.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ShoppingOnline.Models;
 using ShoppingOnline.Models.ViewModals;
 
 namespace ShoppingOnline.Controllers;
 
-public class ProductManagement : Controller
+[Authorize(Roles = "Admins")]
+public class ProductManagementController : Controller
 {
     private readonly ILogger<HomeController> _logger;
 
@@ -13,7 +15,7 @@ public class ProductManagement : Controller
 
     private IWebHostEnvironment _webHost;
     
-    public ProductManagement(ILogger<HomeController> logger,
+    public ProductManagementController(ILogger<HomeController> logger,
         IWebHostEnvironment webHost, IProductInterface productInterface)
     {
         _logger = logger;

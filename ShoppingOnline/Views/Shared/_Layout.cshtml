@@ -3,6 +3,8 @@
 @using ShoppingOnline.Controllers
 
 @inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
 @inject Utils Utils
 
 <!DOCTYPE html>
@@ -25,13 +27,18 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1"></ul>
-
+                <ul class="navbar-nav flex-grow-1">
+                    @if (Utils.IsAdmin(User))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="ProductManagement" asp-action="Index">Quản Lý Sản Phẩm</a>
+                        </li>
+                    }
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Shopping" asp-action="List">Mua Hàng</a>
                     </li>
-
                 </ul>
+
                 <ul class="navbar-nav flex-grow-0">
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Cart" asp-action="Index">Giỏ Hàng</a>
@@ -47,6 +54,17 @@
                     }
                     else
                     {
+                        <li class="nav-item">
+                            <a href=""
+                               class="nav-link text-dark">
+                                @UserManager.GetUserName(User)
+                                @if (@Utils.IsAdmin(User))
+                                {
+                                    <span>(Admin)</span>
+                                }
+                            </a>
+                        </li>
+                        
                         <li class="nav-item">
                             <a href=""
                                 class="nav-link text-dark" data-bs-toggle="modal" data-bs-target="#exampleModal"
@@ -70,17 +88,17 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Are you want to Sign out?</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        ...
+        You will lost your Cart.
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           <a type="button" class="btn btn-primary"
                   asp-area="" asp-controller="Account" asp-action="SignOut"
-                  >Save changes</a>
+                  >Confirm</a>
       </div>
     </div>
   </div>
