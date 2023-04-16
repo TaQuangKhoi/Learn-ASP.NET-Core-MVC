@@ -1,6 +1,14 @@
 ﻿@model IEnumerable<string> 
 
-<a asp-controller="Shopping" asp-action="List" class="cat btn btn-outline-primary col" style="width: 100%;" asp-route-category="">All</a>
+<a asp-controller="Shopping"
+   asp-action="List"
+   class="cat btn btn-outline-primary col" style="width: 100%;"
+   asp-route-category="">
+    All
+</a>
+     
 @foreach(string c in Model){
-    <a asp-route-category="@c" asp-action="List" style="width: 100%" class="cat btn btn-outline-primary col">@c</a>
+    <a asp-route-category="@c" asp-action="List" style="width: 100%" class="cat btn btn-outline-primary col">
+        @c
+     </a>
 }
